@@ -2,6 +2,7 @@ const snippetNode = document.getElementById('snippet')
 const snippetContainerNode = document.getElementById('snippet-container')
 const obturateur = document.getElementById('save')
 const shadowsOption = document.getElementById('optShadows')
+const backdropOption = document.getElementById('optBackdrop')
 
 const getInitialHtml = fontFamily => {
   const cameraWithFlashEmoji = String.fromCodePoint(128248)
@@ -133,10 +134,25 @@ obturateur.addEventListener('click', () => {
 let isInAnimation = false
 
 shadowsOption.addEventListener('change', () => {
-  const OPT_DISABLED_CLASS = 'snippet--no-shadows'
+  const OPT_SHADOWS_DISABLED_CLASS = 'snippet--no-shadows'
 
-  if (!shadowsOption.checked) snippetNode.classList.add(OPT_DISABLED_CLASS)
-  else snippetNode.classList.remove(OPT_DISABLED_CLASS)
+  if (!shadowsOption.checked) {
+    snippetNode.classList.add(OPT_SHADOWS_DISABLED_CLASS)
+  }
+  else {
+    snippetNode.classList.remove(OPT_SHADOWS_DISABLED_CLASS)
+  }
+})
+
+backdropOption.addEventListener('change', () => {
+  const OPT_BACKDROP_DISABLED_CLASS = 'snippet-container--no-backdrop'
+
+  if (!backdropOption.checked) {
+    snippetContainerNode.classList.add(OPT_BACKDROP_DISABLED_CLASS);
+  }
+  else {
+    snippetContainerNode.classList.remove(OPT_BACKDROP_DISABLED_CLASS);    
+  }
 })
 
 obturateur.addEventListener('mouseover', () => {
